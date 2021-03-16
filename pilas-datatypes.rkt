@@ -1,13 +1,16 @@
 #lang eopl
 (define-datatype stack stack?
   (empty-stack)
-  (non-empty-stack (sym symbol?)))
+  (stack-element (sym symbol?)
+                 (rest stack?)
+                 )
+  )
 
 (define push
   (lambda (n stck)
     (cases stack stck
       (empty-stack () '(n))
-      (non-empty-stack (sym) (cons n stck)))
+      (stack-element (sym rest) (stack-element n stck)))
     )
   )
 
@@ -15,7 +18,7 @@
   (lambda (stck)
     (cases stack stck
       (empty-stack () '())
-      (non-empty-stack (sym) (cdr stck))
+      (stack-element (sym rest) rest)
       )
     )
   )
@@ -24,7 +27,15 @@
   (lambda (stck)
     (cases stack stck
       (empty-stack () '())
-      (non-empty-stack (sym symbol?) (car stck))
+      (stack-element (sym rest) sym)
       )
     )
+  )
+
+(define my-stack
+  (stack-element 'x
+                 (stack-element 'y
+                                (empty-stack)
+                                )
+                 )
   )

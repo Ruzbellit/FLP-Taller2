@@ -1,7 +1,5 @@
 #lang eopl
-(define empty-stack
-  (lambda () '())
-  )
+(define empty-stack '())
 
 (define push
   (lambda (n stack)
@@ -10,8 +8,8 @@
 (define pop
   (lambda (stack)
     (if (empty-stack? stack)
-        (cdr stack)
         '()
+        (cdr stack)
         )
     )
   )
@@ -19,8 +17,8 @@
 (define top
   (lambda (stack)
     (if (empty-stack? stack)
-        (car stack)
         '()
+        (car stack)
         )
     )
   )
