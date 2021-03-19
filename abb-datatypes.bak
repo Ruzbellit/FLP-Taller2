@@ -1,0 +1,2 @@
+#lang eopl
+(define-dataype abb-l)
