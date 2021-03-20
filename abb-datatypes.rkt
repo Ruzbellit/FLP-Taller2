@@ -78,8 +78,66 @@
     )
   )
 
+(define bintree-order-validation
+  (lambda (tree)
+    (cases bintree tree
+      (empty-bintree () #t)
+      (node (int left right) (and (if (at-leaf? left)
+                                     (and (> (current-element tree) (current-element (move-to-left-son tree)))
+                                          (bintree-order-validation left)
+                                          )
+                                     #t
+                                     )
+                                 (if (at-leaf? right)
+                                     (and (< (current-element tree) (current-element (move-to-right-son tree)))
+                                          (bintree-order-validation right)
+                                          )
+                                     #t)
+                                 )
+            )
+      )
+    )
+  )
+
+
+
+(define insert-element-into-bintree
+  (lambda (num tree)
+    (cases bintree tree
+      (empty-bintree () tree)
+      (node (int lef right) 2)
+      )
+    )
+  )
+
+(define parse
+  (lambda (list-bintree)
+    (cond
+      [(null? list-bintree) (empty-bintree)]
+      [else (node (car list-bintree) (parse (cadr list-bintree)) (parse (caddr list-bintree)))]
+      )
+    )
+  )
+
+(define unparse
+  (lambda (tree)
+    (cases bintree tree
+      (empty-bintree () '())
+      (node (int left right) (cons int (cons (unparse left) (cons (unparse right) '()))))
+      )
+    )
+  )
+
+(define lista
+    '(5 (3 (1 () ()) (4 () ())) ())
+  )
+
 (define arbol (node 5
-                    (node 4 (empty-bintree) (empty-bintree))
-                    (node 5 (empty-bintree) (empty-bintree))
+                    (node 2
+                          (node 5
+                                (empty-bintree)
+                                (empty-bintree))
+                          (empty-bintree))
+                    (node 6 (empty-bintree) (empty-bintree))
                     )
   )
