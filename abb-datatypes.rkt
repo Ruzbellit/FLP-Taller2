@@ -57,24 +57,24 @@
     )
   )
 
-(define bintree-with-at-least-one-child
+(define bintree-with-at-least-one-child?
 (lambda (tree)
     (cases bintree tree
       (empty-bintree () #f)
-      (node (int left right) (or (empty-bintree? left) (empty-bintree? right)))
+      (node (int left right) (or (not (empty-bintree? left)) (not (empty-bintree? right))))
       )
     )
   )
 
 (define insert-to-left
   (lambda (num tree)
-    (node (current-element tree) (number->bintree num) (empty-bintree))
+    (node (current-element tree) (number->bintree num) (move-to-right-son tree))
     )
   )
 
 (define insert-to-right
   (lambda (num tree)
-    (node (current-element tree) (empty-bintree) (number->bintree num))
+    (node (current-element tree) (move-to-left-son tree) (number->bintree num))
     )
   )
 
@@ -141,3 +141,48 @@
                     (node 6 (empty-bintree) (empty-bintree))
                     )
   )
+
+;Pruebas
+(empty-bintree)
+;()
+
+(current-element (parse '(7 () ())))
+;7
+
+(move-to-left-son (parse'(12 (1 () ()) (31 () ()))))
+;(1 () ())
+
+(move-to-right-son (parse '(12 (1 () ()) (31 () ()))))
+;(31 () ())
+
+(number->bintree 93)
+;(93 () ())
+
+(empty-bintree? (move-to-left-son (parse '(13 () ()))))
+;#t
+
+(at-leaf? (parse '(7 () ())))
+;#t
+
+(bintree-with-at-least-one-child? (parse '(18 () (38 () ()))))
+;#t
+
+(insert-to-left 9 (parse '(18 () ())))
+;(18 (9 () ()) ())
+
+(insert-to-right 27 (insert-to-left 9 (parse '(18 () ()))))
+;(18 (9 () ()) (27 () ()))
+
+(define Arbol_Ejemplo
+  (parse '(8 (3 (1 () ())
+                (6 (4 () ())
+                   (7 () ())))
+             (10 ()
+                 (14 (13 () ())
+                     ())))
+         )
+  )
+(bintree-order-validation Arbol_Ejemplo)
+;#t
+
+;(insert-element-into-bintree Arbol_Ejemplo 2)
