@@ -82,22 +82,22 @@
   (lambda (tree)
     (cases bintree tree
       (empty-bintree () #t)
-      (node (int left right) (and (if (at-leaf? left)
-                                     (and (> (current-element tree) (current-element (move-to-left-son tree)))
-                                          (bintree-order-validation left)
-                                          )
-                                     #t
-                                     )
-                                 (if (at-leaf? right)
-                                     (and (< (current-element tree) (current-element (move-to-right-son tree)))
-                                          (bintree-order-validation right)
-                                          )
-                                     #t)
-                                 )
+      (node (int left right) (and (if (empty-bintree? left)
+                                      #t
+                                      (and (> (current-element tree) (current-element (move-to-left-son tree)))
+                                           (bintree-order-validation left)) ;;hacer con cond
+                                      )
+                                  (if (empty-bintree? right)
+                                      #t
+                                      (and (< (current-element tree) (current-element (move-to-right-son tree)))
+                                           (bintree-order-validation right)) ;;hacer con cond
+                                      )
+                                  )
             )
       )
     )
   )
+
 
 
 
