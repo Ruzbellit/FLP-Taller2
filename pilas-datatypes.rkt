@@ -1,4 +1,17 @@
+;;Ruzbellit Rossy Romero Ramirez - 1925456
+;;Christian Villanueva Paez - 1924546
+
 #lang eopl
+
+
+;;******************************************************************************************
+;;
+;; Gramatica para stack
+;;
+;; <stack>    ::= (<empty-stack>)
+;;            ::= (<symbol> <stack>)
+;******************************************************************************************
+
 (define-datatype stack stack?
   (empty-stack)
   (stack-element (sym symbol?)

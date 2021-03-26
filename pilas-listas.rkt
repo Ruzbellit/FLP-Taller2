@@ -1,32 +1,50 @@
+;;Ruzbellit Rossy Romero Ramirez - 1925456
+;;Christian Villanueva Paez - 1924546
+
 #lang eopl
-(define empty-stack '())
+
+;;******************************************************************************************
+;;
+;; Gramatica para stack
+;;
+;; <stack>    ::= (<empty-stack>)
+;;            ::= (<symbol> <stack>)
+;******************************************************************************************
+
+(define empty-stack
+  (lambda ()
+    (list 'empty-stack)
+    )
+  )
+
+(define stack
+  (lambda (sym stack)
+    (list 'stack sym stack)))
 
 (define push
-  (lambda (n stack)
-    (cons n stack)))
+  (lambda (n stck)
+    (stack n stck)))
 
 (define pop
-  (lambda (stack)
-    (if (empty-stack? stack)
-        '()
-        (cdr stack)
+  (lambda (stck)
+    (if (empty-stack? stck)
+        (empty-stack)
+        (caddr stck)
         )
     )
   )
 
 (define top
-  (lambda (stack)
-    (if (empty-stack? stack)
-        '()
-        (car stack)
+  (lambda (stck)
+    (if (empty-stack? stck)
+        (empty-stack)
+        (cadr stck)
         )
     )
   )
 
 (define empty-stack?
-  (lambda (stack)
-    (eqv? empty-stack stack)
+  (lambda (stck)
+    (eqv? (car (empty-stack)) (car stck))
     )
   )
-
-(define a '(1 2 3 4))
