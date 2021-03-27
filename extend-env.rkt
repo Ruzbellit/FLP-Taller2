@@ -1,10 +1,16 @@
 #lang eopl
+;;Estudiantes:
+;;Ruzbellit Rossy Romero Ramirez (1925456)
+;;ruzbellit.romero@correounivalle.edu.co
+;;Christian Villanueva Paez (1924546)
+;;christian.villanueva@correounivalle.edu.co
 
-;; Gramática
+;; GRAMATICA PARA ENV
 ;; Env := (empty-env)
 ;;     := (extend-env Var SchemeVal Env)
 
 ;; Var := Symbol
+;;-----------------------------------------------------------------------------------
 
 ;empty-env : () → Env
 (define empty-env

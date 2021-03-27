@@ -5,14 +5,14 @@
 ;;Christian Villanueva Paez (1924546)
 ;;christian.villanueva@correounivalle.edu.co
 
-;;la gramatica
+;;GRAMATICA PARA PREFIX-LIST
 ;;Prefix-list ::= (Prefix-exp)
 ;;                 pref-exp (pref)
 ;;Prefix-exp ::= Int
 ;;               const-exp (num)
 ;;           ::= - Prefix-exp Prefix-exp
 ;;               diff-exp (operand1 operand2)
-
+;;-----------------------------------------------------------------------------------
 
 ;;Creacion del datatype
 (define-datatype prefix-exp prefix-exp?

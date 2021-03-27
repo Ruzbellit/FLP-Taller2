@@ -1,14 +1,11 @@
 #lang eopl
 ;;Estudiantes:
-;
 ;;Ruzbellit Rossy Romero Ramirez (1925456)
 ;;ruzbellit.romero@correounivalle.edu.co
-;
 ;;Christian Villanueva Paez (1924546)
 ;;christian.villanueva@correounivalle.edu.co
  
-;******************************************************************************************
-;; Gramática para first language:
+;; GRAMATICA PARA FIRST LANGUAGE:
 ;;
 ;;  <programa>      ::= <expresion>
 ;;                      <un-program (exp)>
@@ -22,9 +19,7 @@
 ;;                      <declaracion (ids exps cuerpo)>
 ;;  <operacion>     ::= + | - | * | /
 ;;                      primitiva
-;******************************************************************************************
-
-;******************************************************************************************
+;;-----------------------------------------------------------------------------------
 
 ;Especificación Léxica
 (define lexica
