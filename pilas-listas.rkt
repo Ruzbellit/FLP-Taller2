@@ -1,50 +1,65 @@
-;;Ruzbellit Rossy Romero Ramirez - 1925456
-;;Christian Villanueva Paez - 1924546
-
 #lang eopl
+;;Estudiantes:
+;;Ruzbellit Rossy Romero Ramirez (1925456)
+;;ruzbellit.romero@correounivalle.edu.co
+;;Christian Villanueva Paez (1924546)
+;;christian.villanueva@correounivalle.edu.co
 
-;;******************************************************************************************
-;;
-;; Gramatica para stack
+;; GRAMATICA PARA STACK (pila)
 ;;
 ;; <stack>    ::= (<empty-stack>)
 ;;            ::= (<symbol> <stack>)
-;******************************************************************************************
+;;-----------------------------------------------------------------------------------
 
+;; empty-stack :  -> Stack
+;; Proposito:
+;; Procedimiento que retorna la representacion vacía de una pila
 (define empty-stack
-  (lambda ()
-    (list 'empty-stack)
+  (lambda () '()
     )
   )
+;;-----------------------------------------------------------------------------------
 
-(define stack
-  (lambda (sym stack)
-    (list 'stack sym stack)))
-
+;; push : Symbol x Stack -> Stack
+;; Proposito:
+;; Procedimiento que inserta un elemento en la pila
 (define push
   (lambda (n stck)
-    (stack n stck)))
+    (cons n stck)))
+;;-----------------------------------------------------------------------------------
 
+;; pop : Stack -> Stack
+;; Proposito:
+;; Procedimiento que retira el elemento superior de la pila
 (define pop
   (lambda (stck)
     (if (empty-stack? stck)
         (empty-stack)
-        (caddr stck)
+        (cdr stck)
         )
     )
   )
+;;-----------------------------------------------------------------------------------
 
+;; top : Stack -> Symbol
+;; Proposito:
+;; Procedimiento que retorna el elemento superior de la pila
 (define top
   (lambda (stck)
     (if (empty-stack? stck)
         (empty-stack)
-        (cadr stck)
+        (car stck)
         )
     )
   )
+;;-----------------------------------------------------------------------------------
 
+;; empty-stack? : Stack -> Boolean
+;; Proposito:
+;; Procedimiento que verifica si una pila esta vacía
 (define empty-stack?
   (lambda (stck)
-    (eqv? (car (empty-stack)) (car stck))
+    (eqv? (empty-stack) stck)
     )
   )
+;;-----------------------------------------------------------------------------------

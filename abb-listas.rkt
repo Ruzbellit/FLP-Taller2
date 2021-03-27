@@ -5,13 +5,14 @@
 ;;Christian Villanueva Paez (1924546)
 ;;christian.villanueva@correounivalle.edu.co
 
-;; GRAMATICA
+;; GRAMATICA PARA BINTREE
 ;; Bintree  ::= (empty-bintree)
 ;;          ::= (node <Number> <Bintree> <Bintree>)
 ;;-----------------------------------------------------------------------------------
 
-
-;;
+;; empty-bintree :  -> Bintree
+;; Proposito:
+;; Procedimiento que retorna la representacion vacio de Bintree
 (define empty-bintree
   (lambda () '()
     )
