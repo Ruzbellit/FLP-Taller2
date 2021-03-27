@@ -98,11 +98,13 @@
 
 (define check-env
   (lambda (e n)
-        (if (eqv? (- (depth-env e) n) 0)
+    (if (<= n (depth-env e))
+        (if (eqv? n (depth-env e))
             (get-var-values-env e)
             (cond
               [(eqv? (car e) 'empty-env) '()]
               [(eqv? (car e) 'extend-env) (check-env (cadddr e) n)]
-              [(eqv? (car e) 'extend-env*) (check-env (caddr e) n)]))))
+              [(eqv? (car e) 'extend-env*) (check-env (caddr e) n)]))
+        (eopl:error 'check-env "Not possible to search depth on environment"))))
 
 
