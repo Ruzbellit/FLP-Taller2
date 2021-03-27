@@ -1,4 +1,11 @@
 #lang eopl
+;;Estudiantes:
+;;Ruzbellit Rossy Romero Ramirez (1925456)
+;;ruzbellit.romero@correounivalle.edu.co
+;;Christian Villanueva Paez (1924546)
+;;christian.villanueva@correounivalle.edu.co
+
+;;
 (define empty-bintree
   (lambda () '()
     )
